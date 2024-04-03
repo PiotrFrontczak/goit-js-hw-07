@@ -30,10 +30,10 @@ function openModal(ev) {
     return;
   }
 
-  const largeImageSrc = evt.target.dataset.source;
+  const largeImg = ev.target.dataset.source;
 
   const instance = basicLightbox.create(`
-    <img src="${largeImageSrc}" width="800" height="600">
+    <img src="${largeImg}" width="800" height="600">
 `)
       instance.show();
 

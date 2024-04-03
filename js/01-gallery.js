@@ -3,6 +3,7 @@ import { galleryItems } from './gallery-items.js';
 
 const galleryContainer = document.querySelector('.gallery');
 
+
 function createGalleryItem({ preview, original, description }) {
   const galleryItem = document.createElement('li');
   galleryItem.classList.add('gallery__item');
@@ -51,5 +52,19 @@ galleryContainer.addEventListener('click', openModal);
 const gallery = galleryItems.map(createGalleryItem);
 galleryContainer.append(...gallery);
 
+
+for (const item of galleryItems) {
+  const html = `<ul class="gallery__item">
+    <a class="gallery__link" href="${item.original}">
+      <img
+        class="gallery__image"
+        src="${item.preview}"
+        data-source="${item.description}"
+        alt="${item.description}"
+      />
+    </a>
+  </ul>`;
+  
+}
 
 console.log(galleryItems);

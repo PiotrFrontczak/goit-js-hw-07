@@ -24,13 +24,13 @@ function createGalleryItem({ preview, original, description }) {
   return galleryItem;
 }
 
-function openModal(event) {
-  event.preventDefault();
-  if (event.target.nodeName !== 'IMG') {
+function openModal(ev) {
+  ev.preventDefault();
+  if (ev.target.nodeName !== 'IMG') {
     return;
   }
 
-  const largeImageSrc = event.target.dataset.source;
+  const largeImageSrc = evt.target.dataset.source;
 
   const instance = basicLightbox.create(`
     <img src="${largeImageSrc}" width="800" height="600">
@@ -39,8 +39,8 @@ function openModal(event) {
 
   window.addEventListener('keydown', closeModalOnEscape);
 
-  function closeModalOnEscape(event) {
-    if (event.key === 'Escape') {
+  function closeModalOnEscape(ev) {
+    if (ev.key === 'Escape') {
       instance.close();
       window.removeEventListener('keydown', closeModalOnEscape);
     }

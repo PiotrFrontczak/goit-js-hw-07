@@ -1,7 +1,7 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
 
-const galleryContainer = document.querySelector('.gallery');
+const galleryContainer = document.querySelector("ul.gallery");
 
 
 function createGalleryItem({ preview, original, description }) {
@@ -32,10 +32,8 @@ function openModal(ev) {
 
   const largeImg = ev.target.dataset.source;
 
-  const instance = basicLightbox.create(`
-    <img src="${largeImg}" width="800" height="600">
-`)
-      instance.show();
+  basicLightbox.create(`
+    <img src="${largeImg}" width="800" height="600">`).show();
 
   window.addEventListener('keydown', closeModalOnEscape);
 

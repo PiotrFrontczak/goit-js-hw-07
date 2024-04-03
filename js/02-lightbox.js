@@ -42,5 +42,7 @@ for (const item of galleryItems) {
       />
     </a>
 </li>`;
+    galleryContainer.insertAdjacentHTML("beforeend", html);
 }
+
 initializeLightbox();

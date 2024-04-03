@@ -61,7 +61,7 @@ for (const item of galleryItems) {
       />
     </a>
   </ul>`;
-  
+  galleryContainer.insertAdjacentHTML("beforeend", html);
 }
 
 console.log(galleryItems);

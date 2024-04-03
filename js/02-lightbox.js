@@ -29,17 +29,4 @@ function initializeLightbox() {
 
 galleryContainer.append(...galleryItems.map(createGalleryItem));
 
-for (const item of galleryItems) {
-    const html = `<li class="gallery__item">
-   <a class="gallery__link" href="${item.original}">
-      <img
-        class="gallery__image"
-        src="${item.preview}"
-        alt="${item.description}"
-      />
-    </a>
-</li>`;
-    galleryContainer.insertAdjacentHTML("beforeend", html);
-}
-
 initializeLightbox();

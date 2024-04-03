@@ -51,18 +51,4 @@ galleryContainer.addEventListener('click', openModal);
 const gallery = galleryItems.map(createGalleryItem);
 galleryContainer.append(...gallery);
 
-for (const item of galleryItems) {
-  const html = `<ul class="gallery__item">
-    <a class="gallery__link" href="${item.original}">
-      <img
-        class="gallery__image"
-        src="${item.preview}"
-        data-source="${item.original}"
-        alt="${item.description}"
-      />
-    </a>
-  </ul>`;
-  galleryContainer.insertAdjacentHTML("beforeend", html);
-}
-
 console.log(galleryItems);

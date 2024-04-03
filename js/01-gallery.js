@@ -14,7 +14,7 @@ function createGalleryItem({ preview, original, description }) {
   const galleryImage = document.createElement('img');
   galleryImage.classList.add('gallery__image');
   galleryImage.src = preview;
-  galleryImage.setAttribute('data-source', original);
+  galleryImage.setAttribute('data-source', original); // Poprawiono na original
   galleryImage.alt = description;
 
   galleryLink.appendChild(galleryImage);
@@ -31,14 +31,14 @@ function openModal(ev) {
 
   const largeImg = ev.target.dataset.source;
 
-  basicLightbox.create(`
+  const lightboxInstance = basicLightbox.create(`
     <img src="${largeImg}" width="800" height="600">`).show();
 
   window.addEventListener('keydown', closeModalOnEscape);
 
   function closeModalOnEscape(ev) {
     if (ev.key === 'Escape') {
-      instance.close();
+      lightboxInstance.close(); // Poprawiono na lightboxInstance
       window.removeEventListener('keydown', closeModalOnEscape);
     }
   }
@@ -56,7 +56,7 @@ for (const item of galleryItems) {
       <img
         class="gallery__image"
         src="${item.preview}"
-        data-source="${item.description}"
+        data-source="${item.original}" // Poprawiono na original
         alt="${item.description}"
       />
     </a>

@@ -2,6 +2,7 @@ import { galleryItems } from './gallery-items.js';
 // Change code below this line
 
 const galleryContainer = document.querySelector("ul.gallery");
+let lightboxInstance; 
 
 function createGalleryItem({ preview, original, description }) {
   const galleryItem = document.createElement('li');
@@ -14,7 +15,7 @@ function createGalleryItem({ preview, original, description }) {
   const galleryImage = document.createElement('img');
   galleryImage.classList.add('gallery__image');
   galleryImage.src = preview;
-  galleryImage.setAttribute('data-source', original); // Poprawiono na original
+  galleryImage.setAttribute('data-source', original);
   galleryImage.alt = description;
 
   galleryLink.appendChild(galleryImage);
@@ -31,16 +32,17 @@ function openModal(ev) {
 
   const largeImg = ev.target.dataset.source;
 
-  const lightboxInstance = basicLightbox.create(`
-    <img src="${largeImg}" width="800" height="600">`).show();
+  lightboxInstance = basicLightbox.create(`
+    <img src="${largeImg}" width="800" height="600">`);
+    lightboxInstance.show();
 
   window.addEventListener('keydown', closeModalOnEscape);
+}
 
-  function closeModalOnEscape(ev) {
-    if (ev.key === 'Escape') {
-      lightboxInstance.close(); // Poprawiono na lightboxInstance
-      window.removeEventListener('keydown', closeModalOnEscape);
-    }
+function closeModalOnEscape(ev) {
+  if (ev.key === 'Escape') {
+    lightboxInstance.close(); 
+    window.removeEventListener('keydown', closeModalOnEscape);
   }
 }
 
@@ -49,14 +51,13 @@ galleryContainer.addEventListener('click', openModal);
 const gallery = galleryItems.map(createGalleryItem);
 galleryContainer.append(...gallery);
 
-
 for (const item of galleryItems) {
   const html = `<ul class="gallery__item">
     <a class="gallery__link" href="${item.original}">
       <img
         class="gallery__image"
         src="${item.preview}"
-        data-source="${item.original}" // Poprawiono na original
+        data-source="${item.original}"
         alt="${item.description}"
       />
     </a>

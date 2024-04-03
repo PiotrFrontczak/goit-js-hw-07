@@ -23,14 +23,11 @@ function createGalleryItem({ preview, original, description }) {
 }
 
 function initializeLightbox() {
-  new SimpleLightbox('.gallery a', {
-    captionsData: 'alt', 
-    captionDelay: 250
+  new SimpleLightbox('.gallery a', {captionsData: 'alt', captionDelay: 250
   });
 }
 
-const gallery = galleryItems.map(createGalleryItem);
-galleryContainer.append(...gallery);
+galleryContainer.append(...galleryItems.map(createGalleryItem));
 
 for (const item of galleryItems) {
     const html = `<li class="gallery__item">
